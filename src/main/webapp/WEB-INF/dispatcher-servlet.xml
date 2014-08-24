@@ -11,12 +11,15 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<context:component-scan base-package="com.jevoncode.cms.controller" />
-	<mvc:annotation-driven />  
-	
+	<mvc:annotation-driven />
+
 	<bean id="testDao" class="com.jevoncode.cms.dao.impl.TestDaoImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+	<bean id="menuDao" class="com.jevoncode.cms.dao.impl.MenuDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -26,8 +29,8 @@
 	</bean>
 
 	<context:property-placeholder location="classpath:jdbc.properties" />
-	
-	<mvc:resources mapping="/resources/**" location="/resources/"/>
+
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />

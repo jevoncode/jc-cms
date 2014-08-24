@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.jevoncode.cms.dao.TestDao;
 import com.jevoncode.cms.domain.Test;
@@ -15,17 +16,17 @@ import com.jevoncode.cms.domain.Test;
 @RequestMapping("/")
 public class IndexController {
 	private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
-	@Autowired
-	private TestDao testDao;
+//	@Autowired
+//	private TestDao testDao;
 
 	@RequestMapping(method = RequestMethod.GET)
-	@ResponseBody
-	public String test() {
-		LOG.debug("test");
-		Test test = new Test();
-		test.setContent("test");
-		testDao.add(test);
-		return "test";
+	public ModelAndView index() {
+//		LOG.debug("test");
+//		Test test = new Test();
+//		test.setContent("test");
+//		testDao.add(test);
+		ModelAndView model = new ModelAndView("index");
+		return model;
 	}
 
 }
